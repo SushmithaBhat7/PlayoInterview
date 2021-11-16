@@ -10,6 +10,8 @@
 		173565C9B8BDFF9334999738 /* Pods_TestPlayo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B00DD0C838F020289BFE1 /* Pods_TestPlayo.framework */; };
 		7A3182DC2742D65900ED0086 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3182DA2742D65900ED0086 /* MainViewController.swift */; };
 		7A3182DD2742D65900ED0086 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3182DB2742D65900ED0086 /* MainViewController.xib */; };
+		7A3182E2274346E500ED0086 /* DtailedVewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3182E0274346E500ED0086 /* DtailedVewViewController.swift */; };
+		7A3182E3274346E500ED0086 /* DtailedVewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A3182E1274346E500ED0086 /* DtailedVewViewController.xib */; };
 		7AE386AF27427720001F0E8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE386AE27427720001F0E8D /* AppDelegate.swift */; };
 		7AE386B127427720001F0E8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE386B027427720001F0E8D /* SceneDelegate.swift */; };
 		7AE386B327427720001F0E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE386B227427720001F0E8D /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		60174DFB729F02B7E3FB25DA /* Pods-TestPlayo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPlayo.release.xcconfig"; path = "Target Support Files/Pods-TestPlayo/Pods-TestPlayo.release.xcconfig"; sourceTree = "<group>"; };
 		7A3182DA2742D65900ED0086 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A3182DB2742D65900ED0086 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		7A3182E0274346E500ED0086 /* DtailedVewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DtailedVewViewController.swift; sourceTree = "<group>"; };
+		7A3182E1274346E500ED0086 /* DtailedVewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DtailedVewViewController.xib; sourceTree = "<group>"; };
 		7AE386AB27427720001F0E8D /* TestPlayo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPlayo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE386AE27427720001F0E8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AE386B027427720001F0E8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,13 +69,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7A3182D92742D61300ED0086 /* Controller */ = {
+		7A3182D92742D61300ED0086 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				7A3182DA2742D65900ED0086 /* MainViewController.swift */,
 				7A3182DB2742D65900ED0086 /* MainViewController.xib */,
+				7A3182E0274346E500ED0086 /* DtailedVewViewController.swift */,
+				7A3182E1274346E500ED0086 /* DtailedVewViewController.xib */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7AE386A22742771F001F0E8D = {
@@ -95,7 +101,7 @@
 		7AE386AD27427720001F0E8D /* TestPlayo */ = {
 			isa = PBXGroup;
 			children = (
-				7A3182D92742D61300ED0086 /* Controller */,
+				7A3182D92742D61300ED0086 /* Controllers */,
 				7AE386C8274279AF001F0E8D /* View */,
 				7AE386C7274279A6001F0E8D /* Model */,
 				7AE386AE27427720001F0E8D /* AppDelegate.swift */,
@@ -198,6 +204,7 @@
 				7AE386BB27427726001F0E8D /* LaunchScreen.storyboard in Resources */,
 				7AE386B827427726001F0E8D /* Assets.xcassets in Resources */,
 				7A3182DD2742D65900ED0086 /* MainViewController.xib in Resources */,
+				7A3182E3274346E500ED0086 /* DtailedVewViewController.xib in Resources */,
 				7AE386B627427720001F0E8D /* Main.storyboard in Resources */,
 				7AED7A2327427E0B00EBD9DA /* MainTableViewCell.xib in Resources */,
 			);
@@ -258,6 +265,7 @@
 				7AE386AF27427720001F0E8D /* AppDelegate.swift in Sources */,
 				7AF8CABC2742BAA1003FD1A3 /* Base.swift in Sources */,
 				7AED7A2227427E0B00EBD9DA /* MainTableViewCell.swift in Sources */,
+				7A3182E2274346E500ED0086 /* DtailedVewViewController.swift in Sources */,
 				7AE386B127427720001F0E8D /* SceneDelegate.swift in Sources */,
 				7A3182DC2742D65900ED0086 /* MainViewController.swift in Sources */,
 			);
