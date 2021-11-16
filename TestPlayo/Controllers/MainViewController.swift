@@ -27,10 +27,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-        let loader =   self.loader()
-               DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                   self.stopLoader(loader: loader)
-               }
+        configureRefreshControl ()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return totalRes
@@ -71,27 +68,24 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true, completion: nil)
     }
-    
-    func addAlert() {
-        let alert = UIAlertController(title: "Long press", message: "", preferredStyle: .alert)
-        self.present(alert, animated: true, completion: nil)
-        }
-    func loader() -> UIAlertController {
-    let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-    loadingIndicator.hidesWhenStopped = true
-    loadingIndicator.style = UIActivityIndicatorView.Style.large
-    loadingIndicator.startAnimating()
-    alert.view.addSubview(loadingIndicator)
-    present(alert, animated: true, completion: nil)
-    return alert
+    func configureRefreshControl () {
+       // Add the refresh control to your UIScrollView object.
+       mainTableView.refreshControl = UIRefreshControl()
+       mainTableView.refreshControl?.addTarget(self, action:
+                                          #selector(handleRefreshControl),
+                                          for: .valueChanged)
     }
 
-func stopLoader(loader : UIAlertController) {
-    DispatchQueue.main.async {
-        loader.dismiss(animated: true, completion: nil)
+    @objc func handleRefreshControl() {
+       // Update your content…
+
+       // Dismiss the refresh control.
+       DispatchQueue.main.async {
+          self.mainTableView.refreshControl?.endRefreshing()
+       }
     }
-}
+    
+
  }
 
 
