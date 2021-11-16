@@ -14,6 +14,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var totalRes = 0
     var articleData:NSArray = []
     var data: NSData = NSData()
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
 
     
@@ -23,7 +24,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.register(UINib(nibName: MainTableViewCell.xibName, bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
-        fetchFilms()
+        fetchNews()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +71,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
+        self.mainTableView.reloadData()
        mainTableView.refreshControl = UIRefreshControl()
        mainTableView.refreshControl?.addTarget(self, action:
                                           #selector(handleRefreshControl),
@@ -85,19 +87,37 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
        }
     }
     
+    func startLoading(){
+        activityIndicator.center = self.view.center;
+        activityIndicator.hidesWhenStopped = true;
+        activityIndicator.style = UIActivityIndicatorView.Style.gray;
+        view.addSubview(activityIndicator);
+        activityIndicator.startAnimating();
+        UIApplication.shared.beginIgnoringInteractionEvents();
+
+    }
+
+    func stopLoading(){
+        activityIndicator.stopAnimating();
+        UIApplication.shared.endIgnoringInteractionEvents();
+
+    }
+    
 
  }
 
 
 extension MainViewController {
-  func fetchFilms() {
+  func fetchNews() {
+    startLoading()
         let url = URL(string: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=fe72a14cc71248af932ccb972334c3f5")
   
-    Alamofire.request(url!, method: .get).responseData {
+    Alamofire.request(url!, method: .get).responseData { [self]
                response in
                if response.result.isSuccess {
                 if let resJson = response.result.value {
                         do {
+                            stopLoading()
                             let root = try JSONDecoder().decode(Base.self, from: resJson )
                             
                             print("\(root)")
