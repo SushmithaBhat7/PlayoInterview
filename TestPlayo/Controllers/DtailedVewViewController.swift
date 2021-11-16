@@ -10,15 +10,13 @@ import WebKit
 
 class DtailedVewViewController: UIViewController, UIWebViewDelegate {
 
-   
     @IBOutlet var webView: WKWebView!
-    
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var links: String = "https://google.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addBackButton()
-     
     }
     override func viewDidAppear(_ animated: Bool) {
         let myURL = URL(string: links)

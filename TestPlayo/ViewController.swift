@@ -16,13 +16,10 @@ class ViewController: UIViewController {
         
     }
     func configureMainController() {
-
         let MainVC = MainViewController()
-        
         let navVC = UINavigationController(rootViewController: MainVC)
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true, completion: nil)
-            
     }
 
 

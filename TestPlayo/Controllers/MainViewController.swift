@@ -15,9 +15,6 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var articleData:NSArray = []
     var data: NSData = NSData()
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
-    
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +33,11 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
-        
         let item = self.articleData[indexPath.row] as? Articles
-        
         cell.authorLabel?.text = item?.author
         cell.descriptionLabel?.text = item?.description
         cell.titleLabel.text = item?.title
         cell.imageViewNews.contentMode = .scaleAspectFit
-        
         let url = URL(string: (item?.urlToImage)!)
           let data = try? Data(contentsOf: url!)
           if let imageData = data {
@@ -52,8 +46,6 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
           }else {
             cell.imageViewNews.image = UIImage(named: "Detail")
           }
-       
-    
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 10
         return cell
@@ -68,6 +60,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let navVC = UINavigationController(rootViewController: DetailedVC)
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
@@ -77,16 +70,12 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                                           #selector(handleRefreshControl),
                                           for: .valueChanged)
     }
-
     @objc func handleRefreshControl() {
-       // Update your content…
-
        // Dismiss the refresh control.
        DispatchQueue.main.async {
           self.mainTableView.refreshControl?.endRefreshing()
        }
     }
-    
     func startLoading(){
         activityIndicator.center = self.view.center;
         activityIndicator.hidesWhenStopped = true;
@@ -94,19 +83,12 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         view.addSubview(activityIndicator);
         activityIndicator.startAnimating();
         UIApplication.shared.beginIgnoringInteractionEvents();
-
     }
-
     func stopLoading(){
         activityIndicator.stopAnimating();
         UIApplication.shared.endIgnoringInteractionEvents();
-
     }
-    
-
  }
-
-
 extension MainViewController {
   func fetchNews() {
     startLoading()
